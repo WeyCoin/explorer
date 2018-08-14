@@ -180,9 +180,18 @@ html(lang="en")
               else
                 label#supply -
           
-          label#lblBlockcount.label.label-default
-          br
-          label#lblConnections.label.label-default
+          .panel.panel-default
+            .panel-heading
+              strong Blocks
+            .panel-body
+              label#lblBlockcount.label.label-default -
+          
+          .panel.panel-default
+            .panel-heading
+              strong Connections
+            .panel-body
+              label#lblConnections.label.label-default
+                          
         .col-sm-9.col-md-10.main
           block content
 
@@ -193,4 +202,3 @@ html(lang="en")
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', '#{settings.gtag}'); 
-        
