@@ -30,12 +30,12 @@ html(lang="en")
         function update_stats(){   
           $.ajax({url: '/ext/summary', success: function(json){
             $("#supply").text(json.data[0].supply);
-            $("#difficulty").text(json.data[0].difficulty);
+            $("#difficulty").text(json.data[0].difficulty.toFixed(4));
             $("#difficultyHybrid").text(json.data[0].difficultyHybrid);
             $("#hashrate").text(json.data[0].hashrate);
             $("#lastPrice").text(json.data[0].lastPrice.toFixed(8));
-            $("#lblConnections").text(json.data[0].connections + ' connections');
-            $("#lblBlockcount").text(json.data[0].blockcount + ' blocks');
+            $("#lblConnections").text(json.data[0].connections);
+            $("#lblBlockcount").text(json.data[0].blockcount);
             $("#lblX1").text(' ');
           }});
         }
@@ -184,13 +184,13 @@ html(lang="en")
             .panel-heading
               strong Blocks
             .panel-body
-              label#lblBlockcount.label.label-default -
+              label#lblBlockcount -
           
           .panel.panel-default
             .panel-heading
               strong Connections
             .panel-body
-              label#lblConnections.label.label-default
+              label#lblConnections -
                           
         .col-sm-9.col-md-10.main
           block content
