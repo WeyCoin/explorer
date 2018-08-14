@@ -164,3 +164,10 @@ tr {
 	bottom: 0px;
 }
 
+
+/* ---------------------------------------------- */
+
+.sidebar .panel .panel-heading,
+.sidebar .panel .panel-body {
+	text-align: center;
+}
