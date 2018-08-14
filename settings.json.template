@@ -16,10 +16,10 @@
   "symbol": "WAE",
 
   // logo
-  "logo": "/images/logo.png",
+  "logo": "/images/weycoin_symbol.png",
 
   // favicon
-  "favicon": "public/favicon.ico",
+  "favicon": "public/images/favicon.png",
 
   // Uses bootswatch themes (http://bootswatch.com/)
   // Valid options:
