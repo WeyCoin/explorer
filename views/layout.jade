@@ -1,6 +1,9 @@
 doctype html
-html
+html(lang="en")
   head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
     title= settings.title
     link(rel='stylesheet', href='/themes/#{settings.theme}/bootstrap.min.css')
     link(rel='stylesheet', href='/vendor/jqplot/jquery.jqplot.css')
@@ -80,17 +83,18 @@ html
       - var time = date + suffix + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;   
       - return time
     -  };
-    .nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+    .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
       .container-fluid
         .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar')
             span.sr-only Toggle navigation
             span.icon-bar
             span.icon-bar
             span.icon-bar
           a.navbar-brand(href='/') #{settings.title}
-        .collapse.navbar-collapse(id='navbar-collapse')
-          ul.nav.navbar-nav
+        
+        .collapse.navbar-collapse(id='navbar')
+          ul.nav.navbar-nav.navbar-right
             li#home
               a.navbar-link(href='/') 
                 span.glyphicon.glyphicon-search
@@ -125,9 +129,13 @@ html
                 a.navbar-link(href='/info')
                   span.glyphicon.glyphicon-info-sign
                   span.menu-text #{settings.locale.menu_api}
-    .col-md-12
-      .row.text-center
-        .col-md-2.col-md-offset-1.col-sm-6
+          
+          form.navbar-form.navbar-right(method='post', action='/search', style='margin-right:5px;')      
+            input.form-control(type='text', name='search', placeholder='#{settings.locale.ex_search_message}')
+
+    .container-fluid
+      .row
+        .col-sm-3.col-md-2.sidebar
           .panel.panel-default
             .panel-heading
               if settings.nethash_units == 'K'
@@ -144,80 +152,34 @@ html
                 strong #{settings.locale.network} (H/s)
             .panel-body
               if settings.index.difficulty == 'Hybrid'
-               label#hashrate - 
-               <br>
-               label#lblX1  
+                label#hashrate - 
+                <br>
+                label#lblX1  
               else  
-               label#hashrate - 
-        .col-md-2.col-sm-6
+                label#hashrate - 
+
           .panel.panel-default
             .panel-heading
               strong #{settings.locale.difficulty}
             .panel-body
               if settings.index.difficulty == 'Hybrid'
-               label#difficulty -
-               <br>
-               label#difficultyHybrid -
+                label#difficulty -
+                <br>
+                label#difficultyHybrid -
               else
-               label#difficulty -
-        .col-md-2.col-sm-6
+                label#difficulty -
+          
           .panel.panel-default
             .panel-heading
               strong #{settings.locale.ex_supply} (#{settings.symbol})
             .panel-body
               if settings.index.difficulty == 'Hybrid'
-               label#supply - 
-               <br>
-               label#lblX1
+                label#supply - 
+                <br>
+                label#lblX1
               else
-               label#supply -  
-        .col-md-2.col-sm-6
-          .panel.panel-default
-            .panel-heading
-              strong #{settings.markets.exchange} Price
-            .panel-body
-              if settings.index.difficulty == 'Hybrid'
-               label#lastPrice -
-               <br>
-               label#lblX1
-              else
-               label#lastPrice - 
-                 
-      .row.text-center(style='margin-top:10px;margin-bottom:20px;')
-        form.form-inline(method='post', action='/search')      
-          #index-search.form-group
-            input.form-control(type='text', name='search', placeholder='#{settings.locale.ex_search_message}', style='min-width:80%;margin-right:5px;')
-            button.btn.btn-success(type='submit') #{settings.locale.ex_search_button}
-    block content
-    .navbar.navbar-default.navbar-fixed-bottom.hidden-xs
-      .col-md-4
-        if settings.display.twitter
-          ul.nav.navbar-nav
-            li.pull-left
-              a#twitter-icon(href="https://twitter.com/#{settings.twitter}", target='_blank')
-                span.glyphicon.fa.fa-twitter
-        if settings.display.facebook
-          ul.nav.navbar-nav
-            li.pull-left
-              a#facebook-icon(href="https://www.facebook.com/#{settings.facebook}", target='_blank')
-                span.glyphicon.fa.fa-facebook
-        if settings.display.googleplus
-          ul.nav.navbar-nav
-            li.pull-left
-              a#googleplus-icon(href="https://plus.google.com/#{settings.googleplus}", target='_blank')
-                span.glyphicon.fa.fa-google-plus
-      .col-md-4
-        ul.nav
-          li.text-center(style='margin-left:80px;margin-right:80px;')
-            p(style='margin-top:15px;') 
-              a.navbar-link(href='https://github.com/iquidus/explorer', target='_blank') Powered by Iquidus Explorer 
-      span.connections
-        label#lblBlockcount.label.label-default -
-        label#lblConnections.label.label-default -
-    if settings.display.google_analytics
-      script(src='https://www.googletagmanager.com/gtag/js?id=#{settings.gtag}')
-      script.
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '#{settings.gtag}');
+                label#supply -
+
+        .col-sm-9.col-md-10.main
+          block content
+
