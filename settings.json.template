@@ -110,10 +110,14 @@
   // low flag: greater than this value flagged yellow
   // high flag: greater than this value flagged red
   "movement": {
-    "min_amount": 100,
-    "low_flag": 1000,
-    "high_flag": 5000
+    "min_amount": 500,
+    "low_flag": 5000,
+    "high_flag": 10000
   },
+
+  // This is the replacement of http://freegeoip.net,
+  // You need an Access Key for the Requests. https://ipstack.com/
+  "ipstack_access_key": "access_key",
 
   // twitter, facebook, googleplus
   "twitter": "iquidus",
