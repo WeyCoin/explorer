@@ -68,7 +68,8 @@
     "googleplus": false,
     "search": true,
     "movement": true,
-    "network": true
+    "network": true,
+    "google_analytics": true
   },
 
   // index page (valid options for difficulty are POW, POS or Hybrid)
@@ -118,6 +119,9 @@
   "twitter": "iquidus",
   "facebook": "yourfacebookpage",
   "googleplus": "yourgooglepluspage",
+
+  // google analytics
+  "gtag": "UA-",
 
   //genesis
   "genesis_tx": "1c414ca84fe73ee0a6fe5b07c8c129026e424baeb285fc81ddb019cfa67a7f0c",
