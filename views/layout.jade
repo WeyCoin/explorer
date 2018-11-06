@@ -31,6 +31,7 @@ html(lang="en")
         function update_stats(){   
           $.ajax({url: '/ext/summary', success: function(json){
             $("#supply").text(json.data[0].supply);
+            $("#masternodesCount").text(json.data[0].masternodesCount);
             $("#difficulty").text(json.data[0].difficulty.toFixed(4));
             $("#difficultyHybrid").text(json.data[0].difficultyHybrid);
             $("#hashrate").text(json.data[0].hashrate);
@@ -157,17 +158,6 @@ html(lang="en")
                 label#lblX1  
               else  
                 label#hashrate - 
-
-          .panel.panel-default
-            .panel-heading
-              strong #{settings.locale.difficulty}
-            .panel-body
-              if settings.index.difficulty == 'Hybrid'
-                label#difficulty -
-                <br>
-                label#difficultyHybrid -
-              else
-                label#difficulty -
           
           .panel.panel-default
             .panel-heading
@@ -182,9 +172,26 @@ html(lang="en")
           
           .panel.panel-default
             .panel-heading
+              strong #{settings.locale.masternodecount}
+            .panel-body
+              label#masternodesCount -
+          
+          .panel.panel-default
+            .panel-heading
               strong Blocks
             .panel-body
               label#lblBlockcount -
+
+          .panel.panel-default
+            .panel-heading
+              strong #{settings.locale.difficulty}
+            .panel-body
+              if settings.index.difficulty == 'Hybrid'
+                label#difficulty -
+                <br>
+                label#difficultyHybrid -
+              else
+                label#difficulty -
           
           .panel.panel-default
             .panel-heading
